@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=FerrisKeys
+Exec=/full/path/to/ferriskeys
+Icon=/full/path/to/assets/images/FerrisKeys.icon
+Comment=Real-time key visualizer
+Categories=Utility;
+Terminal=false
