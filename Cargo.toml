@@ -1,0 +1,45 @@
+[package]
+name = "ferriskeys"
+version = "0.1.0"
+edition = "2021"
+build = "build.rs"
+
+[dependencies]
+crossbeam-channel = "0.5"
+device_query = "1.1"
+dirs = "5"
+eframe = { version = "0.31.1", default-features = false, features = ["glow", "x11"] }
+embed-resource = "2.3"
+evdev = "0.12"
+image = "0.25"
+lazy_static = "1.5.0"
+notify = "8.0.0"
+once_cell = "1.19"
+rdev = "0.5"
+serde = { version = "1.0.219", features = ["derive"] }
+toml = "0.8.22"
+
+[target.'cfg(windows)'.dependencies]
+windows-future = "0.2"
+windows-threading = "0.1"
+winapi = { version = "0.3", features = ["winuser", "processthreadsapi", "minwindef"] }
+windows = { version = "0.61.1", features = ["Win32_UI_WindowsAndMessaging"] }
+tray-icon = "0.20.1"
+muda = "0.16.1"
+
+[target.'cfg(target_os = "linux")'.dependencies]
+gtk = { version = "0.18", optional = true }
+winit = { version = "0.30.11", features = ["x11"] }
+
+[features]
+default = []
+serde = []
+tray = ["gtk"]  # Optional tray support on Linux
+
+[build-dependencies]
+embed-resource = "3.0.3"
+
+[[bin]]
+name = "ferriskeys"
+path = "src/main.rs"
+windows_subsystem = "windows"
